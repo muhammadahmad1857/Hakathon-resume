@@ -27,47 +27,61 @@ fieldset {
   background-color: aliceblue;
 }
 
-legend{
-    font-weight: bold;
-    text-align: center;
-    color: rgb(192, 15, 15);
-    font-size: larger;
+legend {
+  font-weight: bold;
+  text-align: center;
+  color: rgb(192, 15, 15);
+  font-size: larger;
 }
 
-label{
-    display: black;
-    margin-top: 10px;
-    color: rgb(192, 15, 15);
+label {
+  display: black;
+  margin-top: 10px;
+  color: rgb(192, 15, 15);
 }
-input, textarea{
-    width: calc(100% - 1px);
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid rgb(192, 15, 15);
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-button{
-    display: block;
-    color:white;
-    width: 100%;
-    pad: 10px;
-    background-color: rgb(192, 15, 15);
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: medium;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+input,
+textarea {
+  width: calc(100% - 1px);
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid rgb(192, 15, 15);
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-button:hover{
-    background-color: rgb(229, 226, 226);
-    color: rgb(192, 15, 15);
-
+button {
+  display: block;
+  color: white;
+  width: 100%;
+  pad: 10px;
+  background-color: rgb(192, 15, 15);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: medium;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-button:active{
-    margin-top: 4px;
-    margin-left: 2px;
+button:hover {
+  background-color: rgb(229, 226, 226);
+  color: rgb(192, 15, 15);
 }
 
+button:active {
+  margin-top: 4px;
+  margin-left: 2px;
+}
+
+#resumeOutput {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border: 2px solid rgb(192, 15, 15);
+  border-radius: 8px;
+  background-color: rgb(229, 226, 226);
+  box-shadow: 0 4px 8px rgb(225, 88, 88);
+}
+
+#resumeOutput h2 {
+  color: rgb(192, 15, 15);
+}
