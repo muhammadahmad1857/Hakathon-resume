@@ -21,27 +21,85 @@ var _a, _b;
             var _a;
             // Add profile picture to resume at the top-right corner with rounded styling
             var imageHtml = "\n              <img src=\"".concat((_a = e.target) === null || _a === void 0 ? void 0 : _a.result, "\" alt=\"Profile Picture\"\n              style=\"max-width: 150px; float: right; border-radius: 50%; margin-left: 20px;\" />\n          ");
-            // `float: right` moves image to the top-right corner
-            // `border-radius: 50%` makes the image fully rounded
-            // `margin-left: 20px` adds space between image and text
             // Add the image to the resume before the content
             resumeHtml = imageHtml + resumeHtml;
             // Resume content to display the collected information
-            resumeHtml += "\n              <p><strong>Name:</strong> ".concat(name, "</p>\n              <p><strong>Email:</strong> ").concat(email, "</p>\n              <p><strong>Phone:</strong> ").concat(phone, "</p>\n              <p><strong>Education:</strong> ").concat(education, "</p>\n              <p><strong>Experience:</strong> ").concat(experience, "</p>\n              <p><strong>Skills:</strong> ").concat(skills, "</p>\n          ");
+            resumeHtml += "\n              <p><strong>Name:</strong> <span id=\"editableName\">".concat(name, "</span></p>\n              <p><strong>Email:</strong> <span id=\"editableEmail\">").concat(email, "</span></p>\n              <p><strong>Phone:</strong> <span id=\"editablePhone\">").concat(phone, "</span></p>\n              <p><strong>Education:</strong> <span id=\"editableEducation\">").concat(education, "</span></p>\n              <p><strong>Experience:</strong> <span id=\"editableExperience\">").concat(experience, "</span></p>\n              <p><strong>Skills:</strong> <span id=\"editableSkills\">").concat(skills, "</span></p>\n              <button type=\"button\" id=\"editResumeButton\">Edit</button>\n          ");
             // Display the final generated resume with the image
             document.getElementById("resumeOutput").innerHTML =
                 resumeHtml;
+            // Attach the "Edit" functionality after resume is rendered
+            setupEditButton();
         };
         reader.readAsDataURL(profilePicture); // Convert the image file to a Data URL for display
     }
     else {
         // If no image is selected, display resume without profile picture
-        resumeHtml += "\n          <p><strong>Name:</strong> ".concat(name, "</p>\n          <p><strong>Email:</strong> ").concat(email, "</p>\n          <p><strong>Phone:</strong> ").concat(phone, "</p>\n          <p><strong>Education:</strong> ").concat(education, "</p>\n          <p><strong>Experience:</strong> ").concat(experience, "</p>\n          <p><strong>Skills:</strong> ").concat(skills, "</p>\n      ");
+        resumeHtml += "\n          <p><strong>Name:</strong> <span id=\"editableName\">".concat(name, "</span></p>\n          <p><strong>Email:</strong> <span id=\"editableEmail\">").concat(email, "</span></p>\n          <p><strong>Phone:</strong> <span id=\"editablePhone\">").concat(phone, "</span></p>\n          <p><strong>Education:</strong> <span id=\"editableEducation\">").concat(education, "</span></p>\n          <p><strong>Experience:</strong> <span id=\"editableExperience\">").concat(experience, "</span></p>\n          <p><strong>Skills:</strong> <span id=\"editableSkills\">").concat(skills, "</span></p>\n          <button type=\"button\" id=\"editResumeButton\">Edit</button>\n      ");
         // Display the resume without the image
         document.getElementById("resumeOutput").innerHTML =
             resumeHtml;
+        // Attach the "Edit" functionality after resume is rendered
+        setupEditButton();
     }
 });
+// Function to enable/disable editing for the entire resume
+function setupEditButton() {
+    var editButton = document.getElementById("editResumeButton");
+    var editableSections = [
+        "editableName",
+        "editableEmail",
+        "editablePhone",
+        "editableEducation",
+        "editableExperience",
+        "editableSkills",
+    ];
+    editButton.addEventListener("click", function () {
+        // Check if currently in edit mode
+        var isEditMode = editButton.textContent === "Save";
+        editableSections.forEach(function (sectionId) {
+            var section = document.getElementById(sectionId);
+            if (isEditMode) {
+                // Disable editing and save content back to the form
+                section.contentEditable = "false";
+                // Save the edited content back to the form
+                var updatedValue = section.textContent || "";
+                switch (sectionId) {
+                    case "editableName":
+                        document.getElementById("name").value =
+                            updatedValue;
+                        break;
+                    case "editableEmail":
+                        document.getElementById("email").value =
+                            updatedValue;
+                        break;
+                    case "editablePhone":
+                        document.getElementById("phone").value =
+                            updatedValue;
+                        break;
+                    case "editableEducation":
+                        document.getElementById("education").value =
+                            updatedValue;
+                        break;
+                    case "editableExperience":
+                        document.getElementById("experience").value =
+                            updatedValue;
+                        break;
+                    case "editableSkills":
+                        document.getElementById("skills").value =
+                            updatedValue;
+                        break;
+                }
+            }
+            else {
+                // Enable editing for all sections
+                section.contentEditable = "true";
+            }
+        });
+        // Toggle the button text between "Edit" and "Save"
+        editButton.textContent = isEditMode ? "Edit" : "Save";
+    });
+}
 // Toggle Skills Section visibility when button is clicked
 (_b = document.getElementById("toggleSkills")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", function () {
     var skillsSection = document.getElementById("skillsSection");
