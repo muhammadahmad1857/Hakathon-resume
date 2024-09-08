@@ -1,50 +1,78 @@
 /* Global Styles */
 body {
-  font-family: 'Arial', sans-serif;
-  margin: 30px;
+  font-family: "Arial", sans-serif;
+  margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #111 0%, #222 100%); /* Diagonal gradient for body */
+  background: linear-gradient(
+    135deg,
+    #111 0%,
+    #222 100%
+  ); /* Diagonal gradient for body */
   color: #e0e0e0; /* Light gray text for contrast */
+  overflow-x: hidden;
 }
 
 /* Container for the form and resume output */
 .container {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 20px;
-  background: linear-gradient(135deg, #333 0%, #444 100%); /* Dark gradient background */
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); /* Strong shadow for depth */
+  max-width: 100%;
+  margin: 30px auto;
+  padding: 30px;
+  background: linear-gradient(
+    135deg,
+    #333 0%,
+    #444 100%
+  ); /* Dark gradient background */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); /* Strong shadow for depth */
   border-radius: 15px;
+  border: 2px solid #444; /* Dark border for contrast */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Main heading style */
 h1 {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   color: #ffffff; /* White color for heading */
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Subtle shadow for text */
 }
 
 /* Form Styles */
 form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
 }
 
 /* Styles each fieldset with a gradient background, padding, and rounded corners */
 fieldset {
+  width: 90%;
   border: 2px solid #ffffff; /* White border */
   border-radius: 15px;
-  padding: 15px;
-  background: linear-gradient(135deg, #222 0%, #333 100%); /* Gradient background for fieldsets */
+  padding: 20px;
+  background: linear-gradient(
+    135deg,
+    #222 0%,
+    #333 100%
+  ); /* Gradient background for fieldsets */
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5); /* Inset shadow for depth */
+  margin: 20px;
 }
 
 /* Legend font size and color */
 legend {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   color: #ffffff; /* White color for legend text */
   padding: 0 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+legend:hover {
+  color: #ff6347; /* Change color on hover */
 }
 
 /* Styling labels for bold text and spacing */
@@ -56,27 +84,37 @@ label {
 }
 
 /* Input and textarea styling */
-input, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #444; /* Darker border for inputs */
+input,
+textarea {
+  width: 98%;
+  margin-bottom: 20px;
+  padding: 14px;
+  border: 2px solid #555; /* Darker border for inputs */
   border-radius: 10px;
   font-size: 1rem;
-  background: linear-gradient(135deg, #555 0%, #666 100%); /* Gradient background for inputs */
+  background: linear-gradient(
+    135deg,
+    #555 0%,
+    #666 100%
+  ); /* Gradient background for inputs */
   color: #e0e0e0; /* Light text color */
   transition: all 0.3s ease;
 }
 
-/* Input fields and textarea change border and background color when focused */
-input:focus, textarea:focus {
-  border-color: #ffffff; /* White border on focus */
-  background: linear-gradient(135deg, #666 0%, #777 100%); /* Slightly lighter gradient on focus */
+input:focus,
+textarea:focus {
+  border-color: #ff6347; /* Change border color on focus */
+  background: linear-gradient(
+    135deg,
+    #666 0%,
+    #777 100%
+  ); /* Slightly lighter gradient on focus */
   outline: none;
 }
 
 /* Remove padding from file input and remove its border */
 input[type="file"] {
-  padding: 0;
+  padding: 15;
   border: none;
 }
 
@@ -87,40 +125,64 @@ textarea {
 
 /* Styling for all buttons with padding, white background, dark text, rounded corners, and hover effects */
 button {
-  padding: 12px 20px;
-  background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%); /* Gradient background for buttons */
-  color: #000000; /* Dark text color */
+  padding: 14px 22px;
+  background: linear-gradient(
+    135deg,
+    #ff6347 0%,
+    #ff7f50 100%
+  ); /* Gradient background for buttons */
+  color: #ffffff; /* White text color */
   border: none;
   border-radius: 10px;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
 }
 
 /* Change button background color on hover and add a slight scale effect */
 button:hover {
-  background: linear-gradient(135deg, #cccccc 0%, #bbbbbb 100%); /* Slightly darker gradient on hover */
-  transform: scale(1.02);
+  background: linear-gradient(
+    135deg,
+    #ff7f50 0%,
+    #ff6347 100%
+  ); /* Slightly darker gradient on hover */
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Deeper shadow on hover */
 }
 
 /* Specific styles for the 'Toggle Skills' button */
 #toggleSkills {
-  background: linear-gradient(135deg, #444 0%, #555 100%); /* Darker gradient for toggle button */
+  background: linear-gradient(
+    135deg,
+    #444 0%,
+    #555 100%
+  ); /* Darker gradient for toggle button */
   color: #ffffff; /* White text for visibility */
 }
 
 /* Darker gradient background for the toggle button on hover */
 #toggleSkills:hover {
-  background: linear-gradient(135deg, #555 0%, #666 100%); /* Slightly lighter dark gradient on hover */
+  background: linear-gradient(
+    135deg,
+    #555 0%,
+    #666 100%
+  ); /* Slightly lighter dark gradient on hover */
 }
 
 /* Styling for the div where the generated resume will be displayed */
 #resumeOutput {
-  margin-top: 20px;
-  background: linear-gradient(135deg, #222 0%, #333 100%); /* Dark gradient for resume output */
+  margin-top: 30px;
+  background: linear-gradient(
+    135deg,
+    #222 0%,
+    #333 100%
+  ); /* Dark gradient for resume output */
   padding: 20px;
   border: 2px solid #ffffff; /* White border for output area */
   border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); /* Strong shadow for depth */
 }
 
 /* Responsive Styles */
@@ -133,7 +195,8 @@ button:hover {
     gap: 30px;
   }
 
-  input, textarea {
+  input,
+  textarea {
     padding: 15px;
   }
 
@@ -141,4 +204,23 @@ button:hover {
     padding: 15px 25px;
     font-size: 1.2rem;
   }
+}
+
+/* Styling for the 'Generate Shareable Link' button */
+#generateLinkButton {
+  background: linear-gradient(
+    135deg,
+    #4caf50 0%,
+    #8bc34a 100%
+  ); /* Green gradient for the button */
+  color: #ffffff; /* White text for visibility */
+}
+
+/* Darker gradient background for the button on hover */
+#generateLinkButton:hover {
+  background: linear-gradient(
+    135deg,
+    #8bc34a 0%,
+    #4caf50 100%
+  ); /* Slightly darker green gradient on hover */
 }

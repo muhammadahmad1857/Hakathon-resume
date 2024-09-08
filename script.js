@@ -1,4 +1,4 @@
-var _a, _b;
+var _a, _b, _c;
 (_a = document
     .getElementById("resumeForm")) === null || _a === void 0 ? void 0 : _a.addEventListener("submit", function (event) {
     var _a;
@@ -9,38 +9,64 @@ var _a, _b;
     var phone = document.getElementById("phone").value;
     var education = document.getElementById("education").value;
     var experience = document.getElementById("experience").value;
-    var skills = document.getElementById("skills")
-        .value;
+    var skills = document.getElementById("skills").value;
     var profilePicture = (_a = document.getElementById("profile-picture").files) === null || _a === void 0 ? void 0 : _a[0];
     // Initialize resume HTML structure
-    var resumeHtml = "\n      <h2>Generated Resume</h2>\n  ";
+    var resumeHtml = `
+      <h2>Generated Resume</h2>
+  `;
     // If a profile picture is selected, read and display it
     if (profilePicture) {
         var reader = new FileReader();
         reader.onload = function (e) {
             var _a;
             // Add profile picture to resume at the top-right corner with rounded styling
-            var imageHtml = "\n              <img src=\"".concat((_a = e.target) === null || _a === void 0 ? void 0 : _a.result, "\" alt=\"Profile Picture\"\n              style=\"max-width: 150px; float: right; border-radius: 50%; margin-left: 20px;\" />\n          ");
+            var imageHtml = `
+              <img src="${(_a = e.target) === null || _a === void 0 ? void 0 : _a.result}" alt="Profile Picture"
+              style="max-width: 150px; float: right; border-radius: 50%; margin-left: 20px;" />
+          `;
             // Add the image to the resume before the content
             resumeHtml = imageHtml + resumeHtml;
             // Resume content to display the collected information
-            resumeHtml += "\n              <p><strong>Name:</strong> <span id=\"editableName\">".concat(name, "</span></p>\n              <p><strong>Email:</strong> <span id=\"editableEmail\">").concat(email, "</span></p>\n              <p><strong>Phone:</strong> <span id=\"editablePhone\">").concat(phone, "</span></p>\n              <p><strong>Education:</strong> <span id=\"editableEducation\">").concat(education, "</span></p>\n              <p><strong>Experience:</strong> <span id=\"editableExperience\">").concat(experience, "</span></p>\n              <p><strong>Skills:</strong> <span id=\"editableSkills\">").concat(skills, "</span></p>\n              <button type=\"button\" id=\"editResumeButton\">Edit</button>\n          ");
+            resumeHtml += `
+              <p><strong>Name:</strong> <span id="editableName">${name}</span></p>
+              <p><strong>Email:</strong> <span id="editableEmail">${email}</span></p>
+              <p><strong>Phone:</strong> <span id="editablePhone">${phone}</span></p>
+              <p><strong>Education:</strong> <span id="editableEducation">${education}</span></p>
+              <p><strong>Experience:</strong> <span id="editableExperience">${experience}</span></p>
+              <p><strong>Skills:</strong> <span id="editableSkills">${skills}</span></p>
+              <button type="button" id="editResumeButton">Edit</button>
+              <button type="button" id="generateLinkButton">Generate Shareable Link</button>
+          `;
             // Display the final generated resume with the image
             document.getElementById("resumeOutput").innerHTML =
                 resumeHtml;
             // Attach the "Edit" functionality after resume is rendered
             setupEditButton();
+            // Attach the "Generate Shareable Link" functionality
+            setupGenerateLinkButton();
         };
         reader.readAsDataURL(profilePicture); // Convert the image file to a Data URL for display
     }
     else {
         // If no image is selected, display resume without profile picture
-        resumeHtml += "\n          <p><strong>Name:</strong> <span id=\"editableName\">".concat(name, "</span></p>\n          <p><strong>Email:</strong> <span id=\"editableEmail\">").concat(email, "</span></p>\n          <p><strong>Phone:</strong> <span id=\"editablePhone\">").concat(phone, "</span></p>\n          <p><strong>Education:</strong> <span id=\"editableEducation\">").concat(education, "</span></p>\n          <p><strong>Experience:</strong> <span id=\"editableExperience\">").concat(experience, "</span></p>\n          <p><strong>Skills:</strong> <span id=\"editableSkills\">").concat(skills, "</span></p>\n          <button type=\"button\" id=\"editResumeButton\">Edit</button>\n      ");
+        resumeHtml += `
+          <p><strong>Name:</strong> <span id="editableName">${name}</span></p>
+          <p><strong>Email:</strong> <span id="editableEmail">${email}</span></p>
+          <p><strong>Phone:</strong> <span id="editablePhone">${phone}</span></p>
+          <p><strong>Education:</strong> <span id="editableEducation">${education}</span></p>
+          <p><strong>Experience:</strong> <span id="editableExperience">${experience}</span></p>
+          <p><strong>Skills:</strong> <span id="editableSkills">${skills}</span></p>
+          <button type="button" id="editResumeButton">Edit</button>
+          <button type="button" id="generateLinkButton">Generate Shareable Link</button>
+      `;
         // Display the resume without the image
         document.getElementById("resumeOutput").innerHTML =
             resumeHtml;
         // Attach the "Edit" functionality after resume is rendered
         setupEditButton();
+        // Attach the "Generate Shareable Link" functionality
+        setupGenerateLinkButton();
     }
 });
 // Function to enable/disable editing for the entire resume
@@ -100,6 +126,24 @@ function setupEditButton() {
         editButton.textContent = isEditMode ? "Edit" : "Save";
     });
 }
+
+// Function to generate a shareable link for the resume
+function setupGenerateLinkButton() {
+    var generateLinkButton = document.getElementById("generateLinkButton");
+    generateLinkButton.addEventListener("click", function () {
+        var resumeOutput = document.getElementById("resumeOutput").innerHTML;
+        var blob = new Blob([resumeOutput], { type: "text/html" });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement("a");
+        link.href = url;
+        link.download = "resume.html";
+        link.textContent = "Download Resume";
+        document.getElementById("resumeOutput").appendChild(link);
+        // Optionally, you could show an alert or a message with the link
+        alert("A shareable link has been generated. Check the 'Resume Output' section.");
+    });
+}
+
 // Toggle Skills Section visibility when button is clicked
 (_b = document.getElementById("toggleSkills")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", function () {
     var skillsSection = document.getElementById("skillsSection");
