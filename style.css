@@ -1,0 +1,73 @@
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin: 20px;
+  padding: 0;
+  background-color: rgb(231, 229, 229);
+}
+
+h1 {
+  text-align: center;
+  color: rgb(192, 15, 15);
+}
+
+form {
+  max-width: 600px;
+  margin: auto;
+  background-color: rgb(204, 199, 199);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgb(225, 88, 88);
+  padding: 20px;
+}
+fieldset {
+  border: 2px solid rgb(192, 15, 15);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: aliceblue;
+}
+
+legend{
+    font-weight: bold;
+    text-align: center;
+    color: rgb(192, 15, 15);
+    font-size: larger;
+}
+
+label{
+    display: black;
+    margin-top: 10px;
+    color: rgb(192, 15, 15);
+}
+input, textarea{
+    width: calc(100% - 1px);
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid rgb(192, 15, 15);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button{
+    display: block;
+    color:white;
+    width: 100%;
+    pad: 10px;
+    background-color: rgb(192, 15, 15);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: medium;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+button:hover{
+    background-color: rgb(229, 226, 226);
+    color: rgb(192, 15, 15);
+
+}
+
+button:active{
+    margin-top: 4px;
+    margin-left: 2px;
+}
+
