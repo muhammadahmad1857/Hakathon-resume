@@ -1,87 +1,144 @@
+/* Global Styles */
 body {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  margin: 20px;
+  font-family: 'Arial', sans-serif;
+  margin: 30px;
   padding: 0;
-  background-color: rgb(231, 229, 229);
+  background: linear-gradient(135deg, #111 0%, #222 100%); /* Diagonal gradient for body */
+  color: #e0e0e0; /* Light gray text for contrast */
 }
 
+/* Container for the form and resume output */
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #333 0%, #444 100%); /* Dark gradient background */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5); /* Strong shadow for depth */
+  border-radius: 15px;
+}
+
+/* Main heading style */
 h1 {
   text-align: center;
-  color: rgb(192, 15, 15);
-}
-
-form {
-  max-width: 600px;
-  margin: auto;
-  background-color: rgb(204, 199, 199);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgb(225, 88, 88);
-  padding: 20px;
-}
-fieldset {
-  border: 2px solid rgb(192, 15, 15);
-  border-radius: 8px;
-  padding: 20px;
+  font-size: 2.5rem;
+  color: #ffffff; /* White color for heading */
   margin-bottom: 20px;
-  background-color: aliceblue;
 }
 
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Styles each fieldset with a gradient background, padding, and rounded corners */
+fieldset {
+  border: 2px solid #ffffff; /* White border */
+  border-radius: 15px;
+  padding: 15px;
+  background: linear-gradient(135deg, #222 0%, #333 100%); /* Gradient background for fieldsets */
+}
+
+/* Legend font size and color */
 legend {
-  font-weight: bold;
-  text-align: center;
-  color: rgb(192, 15, 15);
-  font-size: larger;
+  font-size: 1.3rem;
+  color: #ffffff; /* White color for legend text */
+  padding: 0 10px;
 }
 
+/* Styling labels for bold text and spacing */
 label {
-  display: black;
-  margin-top: 10px;
-  color: rgb(192, 15, 15);
-}
-input,
-textarea {
-  width: calc(100% - 1px);
-  padding: 8px;
-  margin-top: 5px;
-  border: 1px solid rgb(192, 15, 15);
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-button {
   display: block;
-  color: white;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #e0e0e0; /* Light text color */
+}
+
+/* Input and textarea styling */
+input, textarea {
   width: 100%;
-  pad: 10px;
-  background-color: rgb(192, 15, 15);
-  border-radius: 6px;
+  padding: 12px;
+  border: 2px solid #444; /* Darker border for inputs */
+  border-radius: 10px;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #555 0%, #666 100%); /* Gradient background for inputs */
+  color: #e0e0e0; /* Light text color */
+  transition: all 0.3s ease;
+}
+
+/* Input fields and textarea change border and background color when focused */
+input:focus, textarea:focus {
+  border-color: #ffffff; /* White border on focus */
+  background: linear-gradient(135deg, #666 0%, #777 100%); /* Slightly lighter gradient on focus */
+  outline: none;
+}
+
+/* Remove padding from file input and remove its border */
+input[type="file"] {
+  padding: 0;
+  border: none;
+}
+
+/* Disable textarea resizing for a cleaner look */
+textarea {
+  resize: none;
+}
+
+/* Styling for all buttons with padding, white background, dark text, rounded corners, and hover effects */
+button {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%); /* Gradient background for buttons */
+  color: #000000; /* Dark text color */
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
   cursor: pointer;
-  font-size: medium;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* Change button background color on hover and add a slight scale effect */
 button:hover {
-  background-color: rgb(229, 226, 226);
-  color: rgb(192, 15, 15);
+  background: linear-gradient(135deg, #cccccc 0%, #bbbbbb 100%); /* Slightly darker gradient on hover */
+  transform: scale(1.02);
 }
 
-button:active {
-  margin-top: 4px;
-  margin-left: 2px;
+/* Specific styles for the 'Toggle Skills' button */
+#toggleSkills {
+  background: linear-gradient(135deg, #444 0%, #555 100%); /* Darker gradient for toggle button */
+  color: #ffffff; /* White text for visibility */
 }
 
+/* Darker gradient background for the toggle button on hover */
+#toggleSkills:hover {
+  background: linear-gradient(135deg, #555 0%, #666 100%); /* Slightly lighter dark gradient on hover */
+}
+
+/* Styling for the div where the generated resume will be displayed */
 #resumeOutput {
-  max-width: 600px;
-  margin: auto;
+  margin-top: 20px;
+  background: linear-gradient(135deg, #222 0%, #333 100%); /* Dark gradient for resume output */
   padding: 20px;
-  border: 2px solid rgb(192, 15, 15);
-  border-radius: 8px;
-  background-color: rgb(229, 226, 226);
-  box-shadow: 0 4px 8px rgb(225, 88, 88);
+  border: 2px solid #ffffff; /* White border for output area */
+  border-radius: 15px;
 }
 
-#resumeOutput h2 {
-  color: rgb(192, 15, 15);
+/* Responsive Styles */
+@media (min-width: 768px) {
+  .container {
+    padding: 40px;
+  }
+
+  form {
+    gap: 30px;
+  }
+
+  input, textarea {
+    padding: 15px;
+  }
+
+  button {
+    padding: 15px 25px;
+    font-size: 1.2rem;
+  }
 }
